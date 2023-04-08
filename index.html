@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <title>happy birthday ape</title>
 </head>
 <body>
+  <embed src="/Piano_Music_&_Soft_Rain_-_Alone_in_Rain_(For_Eternity).mp3" loop="true" autostart="true" width="0" height="0">
   <!-- Inputs-->
   <input type="radio" name="item" checked="checked" id="section1" />
   <input type="radio" name="item" id="section2" />
@@ -21,21 +23,129 @@
   <label class="nav__item" for="section4"></label>
 </nav>
 <!-- Sections-->
-<section>
-    <h1 class="Hey">One Page</h1>
+<section class="stars">
+
+  <h2 class="introText typing">this birthday card site is for a certain gorilla, bonobo, monkey, ape, you decide...</h2>
+  <canvas id="canvas">
+  </canvas>
 </section>
 <section>
-    <h1>Pure CSS</h1>
+  <h2 class="introText">its kinda scary to realize you're finally twntyone like the rest of us. from inside jokes to just meeting up to grab a bite, the past year was really something...</h2>
+  <video class="fullscreen" src="/Anime_Rain_Loop_wallpapers.mp4" playsinline autoplay muted loop>
+  </video>
 </section>
 <section>
-    <h1>Full Screen</h1>
+  <h2 class="introText">i hate corny writing like this so i'll wrap it up, thanks for being a part of my life and feel free to vent or rant if you need to incase life gets overwhelming.</h2>
+  <video class="fullscreen" src="/totorovid.mp4" playsinline autoplay muted loop>
+  </video>
 </section>
 <section>
-    <h1>@Ver_Qn</h1>
+    <h3 class="finalText">ps. oh and again, happy birthday.<br><br>~j<br><br><br><br><br><br><br><br><br><br><br><br>pps. we're all gonna make it c':</h1>
 </section><!-- Fix the white space when scrolling two sections at the time-->
 <div class="cover"></div>
   <script>
+"use strict";
 
+var canvas = document.getElementById('canvas'),
+  ctx = canvas.getContext('2d'),
+  w = canvas.width = window.innerWidth,
+  h = canvas.height = window.innerHeight,
+    
+  hue = 217,
+  stars = [],
+  count = 0,
+  maxStars = 1400;
+
+
+// Cache gradient
+var canvas2 = document.createElement('canvas'),
+    ctx2 = canvas2.getContext('2d');
+    canvas2.width = 100;
+    canvas2.height = 100;
+var half = canvas2.width/2,
+    gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+    gradient2.addColorStop(0.025, '#fff');
+    gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+    gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+    gradient2.addColorStop(1, 'transparent');
+
+    ctx2.fillStyle = gradient2;
+    ctx2.beginPath();
+    ctx2.arc(half, half, half, 0, Math.PI * 2);
+    ctx2.fill();
+
+// End cache
+
+function random(min, max) {
+  if (arguments.length < 2) {
+    max = min;
+    min = 0;
+  }
+  
+  if (min > max) {
+    var hold = max;
+    max = min;
+    min = hold;
+  }
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function maxOrbit(x,y) {
+  var max = Math.max(x,y),
+      diameter = Math.round(Math.sqrt(max*max + max*max));
+  return diameter/2;
+}
+
+var Star = function() {
+
+  this.orbitRadius = random(maxOrbit(w,h));
+  this.radius = random(60, this.orbitRadius) / 12;
+  this.orbitX = w / 2;
+  this.orbitY = h / 2;
+  this.timePassed = random(0, maxStars);
+  this.speed = random(this.orbitRadius) / 50000;
+  this.alpha = random(2, 10) / 10;
+
+  count++;
+  stars[count] = this;
+}
+
+Star.prototype.draw = function() {
+  var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
+      y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
+      twinkle = random(10);
+
+  if (twinkle === 1 && this.alpha > 0) {
+    this.alpha -= 0.05;
+  } else if (twinkle === 2 && this.alpha < 1) {
+    this.alpha += 0.05;
+  }
+
+  ctx.globalAlpha = this.alpha;
+    ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+  this.timePassed += this.speed;
+}
+
+for (var i = 0; i < maxStars; i++) {
+  new Star();
+}
+
+function animation() {
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.8;
+    ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 1)';
+    ctx.fillRect(0, 0, w, h)
+  
+  ctx.globalCompositeOperation = 'lighter';
+  for (var i = 1, l = stars.length; i < l; i++) {
+    stars[i].draw();
+  };  
+  
+  window.requestAnimationFrame(animation);
+}
+
+animation();
   </script>
 </body>
 </html>

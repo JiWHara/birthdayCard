@@ -288,7 +288,7 @@ input[type=radio]#section3:checked ~ section:nth-of-type(3) {
 }
 
 input[type=radio]#section3:checked ~ .cover {
-  background-color: #6c5c7c;
+  background-color: #312a38;
 }
 
 input[type=radio]#section4:checked ~ nav label[for=section4] {
@@ -305,7 +305,7 @@ input[type=radio]#section4:checked ~ section:nth-of-type(4) {
 }
 
 input[type=radio]#section4:checked ~ .cover {
-  background-color: #345d7e;
+  background-color: #5792e5;
 }
 
 .nav {
@@ -317,8 +317,8 @@ input[type=radio]#section4:checked ~ .cover {
           transform: translateY(-50%);
 }
 .nav__item {
-  width: 12px;
-  height: 12px;
+  width: 5vw;
+  height: 5vw;
   display: block;
   margin: 12px auto;
   border: solid 2px white;
@@ -357,11 +357,11 @@ section:nth-of-type(2) {
 }
 
 section:nth-of-type(3) {
-  background: #6c5c7c;
+  background: #312a38;
 }
 
 section:nth-of-type(4) {
-  background: #345d7e;
+  background: #5792e5;
 }
 
 .cover {
@@ -387,4 +387,84 @@ body {
 h1 {
   font-size: 6em;
   text-align: center;
+}
+
+.stars {
+  background: #060e1b;
+  overflow: hidden;
+}
+
+.introText {
+  font-family: "birthday";
+  z-index: 1000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  line-height: 150%;
+}
+
+.typing::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  width: 100%;
+  background: rgba(16, 16, 56, 0.233);
+  -webkit-animation: typing 4s steps(16) forwards, caret 1s infinite;
+          animation: typing 4s steps(16) forwards, caret 1s infinite;
+}
+
+@-webkit-keyframes typing {
+  to {
+    width: 0;
+  }
+}
+
+@keyframes typing {
+  to {
+    width: 0;
+  }
+}
+@-webkit-keyframes caret {
+  50% {
+    color: transparent;
+  }
+}
+@keyframes caret {
+  50% {
+    color: transparent;
+  }
+}
+canvas {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+* {
+  overflow: hidden;
+}
+
+h2 {
+  padding: 15%;
+}
+
+video.fullscreen {
+  position: absolute;
+  z-index: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+video.fullscreen::-webkit-media-controls {
+  display: none !important;
+}
+
+.finalText {
+  font-family: "birthday";
 }
