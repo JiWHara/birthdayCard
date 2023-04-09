@@ -81,7 +81,30 @@ section {
   top: 0; right: 0; bottom: 0; left: 0;
   z-index: -1;
 }
-
+#player-container #play-pause {
+  cursor: pointer;
+  text-indent: -999999px;
+  height:40px;
+  width: 40px;
+  padding: 12px 18px;
+  z-index: 2;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
+    background-repeat: no-repeat!important;
+    background-position: center;
+    background-size: 16px;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:20px;
+  background-color: gainsboro;
+}
+.play {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMiAyNHYtMjRsMjAgMTItMjAgMTJ6Ii8+PC9zdmc+);
+  z-index: 1000;
+  position:absolute;
+}
+.pause {
+   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTAgMjRoLTZ2LTI0aDZ2MjR6bTEwLTI0aC02djI0aDZ2LTI0eiIvPjwvc3ZnPg==)!important;
+}
 // Base
 html,
 body {
@@ -110,6 +133,7 @@ h1 {
     position: absolute;
     line-height: 150%;
 }
+
 $bg: rgba(16, 16, 56, 0.233);
 $text-color: #d7b94c;
 $caret-color: rgb(22, 17, 66);

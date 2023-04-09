@@ -10,10 +10,13 @@
     <title>happy birthday ape</title>
 </head>
 <body>
-  <iframe src="/250-milliseconds-of-silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
-  <audio id="player" autoplay loop>
-    <source src="/Piano_Music_&_Soft_Rain_-_Alone_in_Rain_(For_Eternity).mp3" type="audio/mp3">
-</audio>
+  <audio id="track">
+    <source src="Piano_Music_&_Soft_Rain_-_Alone_in_Rain_(For_Eternity).mp3" type="audio/mpeg" />
+  </audio>
+  
+  <div id="player-container">
+    <div id="play-pause" class="play">Play</div>
+  </div>
 
   <!-- Inputs-->
   <input type="radio" name="item" checked="checked" id="section1" />
@@ -48,6 +51,26 @@
 </section><!-- Fix the white space when scrolling two sections at the time-->
 <div class="cover"></div>
   <script>
+var track = document.getElementById('track');
+
+var controlBtn = document.getElementById('play-pause');
+
+function playPause() {
+    if (track.paused) {
+        track.play();
+        //controlBtn.textContent = "Pause";
+        controlBtn.className = "pause";
+    } else { 
+        track.pause();
+         //controlBtn.textContent = "Play";
+        controlBtn.className = "play";
+    }
+}
+
+controlBtn.addEventListener("click", playPause);
+track.addEventListener("ended", function() {
+  controlBtn.className = "play";
+});
 
 "use strict";
 
