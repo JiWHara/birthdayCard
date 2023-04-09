@@ -10,11 +10,11 @@
     <title>happy birthday ape</title>
 </head>
 <body>
-  <audio controls autoplay loop>
-    <source src="Piano_Music_&_Soft_Rain_-_Alone_in_Rain_(For_Eternity).mp3" type="audio/mpeg" id="playAudio">
-  </audio>
-  <iframe src="Piano_Music_&_Soft_Rain_-_Alone_in_Rain_(For_Eternity).mp3" allow="autoplay" style="display:none" id="iframeAudio">
-  </iframe> 
+  <iframe src="/250-milliseconds-of-silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+  <audio id="player" autoplay loop>
+    <source src="/Piano_Music_&_Soft_Rain_-_Alone_in_Rain_(For_Eternity).mp3" type="audio/mp3">
+</audio>
+
   <!-- Inputs-->
   <input type="radio" name="item" checked="checked" id="section1" />
   <input type="radio" name="item" id="section2" />
@@ -48,13 +48,7 @@
 </section><!-- Fix the white space when scrolling two sections at the time-->
 <div class="cover"></div>
   <script>
-var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-  if (!isChrome){
-      $('#iframeAudio').remove()
-  }
-  else {
-      $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
-  }
+
 "use strict";
 
 var canvas = document.getElementById('canvas'),
